@@ -1,5 +1,7 @@
 require 'sinatra'
 
+require './lib/item'
+
 get '/' do
   erb :index
 end
