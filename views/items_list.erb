@@ -2,8 +2,11 @@
   <body>
     <a href = 'items/new'>New Item</a>
     <ul>
-      <% master_list = ItemRepository.new %>
-      <% master_list.add_items(@new_item_name).each do |item| %>
+      <% if defined?(master_list) == nil %>
+        <% master_list = ItemRepository.new %>
+      <% end %>
+      <% master_list.add_items(@new_item_name) %>
+      <% master_list.item_list.each do |item| %>
         <% if @filter == nil %>
             <li><%= item.name %> - <a href = 'items/<%=item.id%>'>Show Item</a></li>
         <% elsif item.name.downcase.include?(@filter.downcase) %>
