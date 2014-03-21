@@ -2,14 +2,14 @@
   <body>
     <a href = 'items/new'>New Item</a>
     <ul>
-      <% ItemRepository.new.items.each do |item| %>
+      <% master_list = ItemRepository.new %>
+      <% master_list.add_items(@new_item_name).each do |item| %>
         <% if @filter == nil %>
-          <li><%= item.name %> - <a href = 'items/<%=item.id%>'>Show Item</a></li>
+            <li><%= item.name %> - <a href = 'items/<%=item.id%>'>Show Item</a></li>
         <% elsif item.name.downcase.include?(@filter.downcase) %>
             <li><%= item.name %> - <a href = 'items/<%=item.id%>'>Show Item</a></li>
         <% end %>
       <% end %>
     </ul>
   </body>
-
 </html>
