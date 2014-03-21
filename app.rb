@@ -16,10 +16,6 @@ get '/items/new' do
   erb :new_items
 end
 
-#put '/items/new' do
-#  erb :items_list
-#end
-
 post '/items' do
   @new_item_name = params[:item_name]
   erb :items_list
