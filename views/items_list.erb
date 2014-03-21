@@ -3,8 +3,10 @@
     <a href = 'items/new'>New Item</a>
     <ul>
       <% ItemRepository.new.items.each do |item| %>
-        <% if item.name.downcase.include?(@filter.downcase) %>
+        <% if @filter == nil %>
           <li><%= item.name %> - <a href = 'items/<%=item.id%>'>Show Item</a></li>
+        <% elsif item.name.downcase.include?(@filter.downcase) %>
+            <li><%= item.name %> - <a href = 'items/<%=item.id%>'>Show Item</a></li>
         <% end %>
       <% end %>
     </ul>
